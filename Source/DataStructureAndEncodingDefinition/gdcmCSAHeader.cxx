@@ -918,8 +918,10 @@ bool check_mapping(uint32_t syngodt, const char *vr)
     }
   assert( p->syngodt == syngodt ); // or else need to update mapping
   const char* lvr = p->vr;
+#if !defined(NDEBUG)
   int check = strcmp(vr, lvr) == 0;
-  assert( check ); (void)check;
+  assert( check );
+#endif
   return true;
 }
 

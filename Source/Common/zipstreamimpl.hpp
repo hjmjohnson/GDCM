@@ -164,15 +164,15 @@ std::streamsize basic_zip_streambuf<charT, traits>::flush(void)
 
             // checking if some bytes were not written.
             if((remainder = written_byte_size%sizeof(char_type)) != 0)
-            {
-                // copy to the beginning of the stream
-				std::streamsize theDiff = written_byte_size-remainder;
-				//assert (theDiff > 0 && theDiff < std::numeric_limits<unsigned int>::max());
+              {
+              // copy to the beginning of the stream
+              std::streamsize theDiff = written_byte_size-remainder;
+              //assert (theDiff > 0 && theDiff < std::numeric_limits<unsigned int>::max());
 
-                memcpy(&(_output_buffer[0]),
-                       &(_output_buffer[(unsigned int)theDiff]), remainder);
+              memcpy(&(_output_buffer[0]),
+                &(_output_buffer[(unsigned int)theDiff]), remainder);
 
-            }
+              }
 
             _zip_stream.avail_out = static_cast<uInt>(_output_buffer.size() - remainder);
             _zip_stream.next_out = &_output_buffer[remainder];
@@ -270,14 +270,14 @@ bool basic_zip_streambuf<charT, traits>::zip_to_stream(
 
             // checking if some bytes were not written.
             if((remainder = written_byte_size % sizeof(char_type)) != 0)
-            {
-                // copy to the beginning of the stream
-				std::streamsize theDiff = written_byte_size-remainder;
-				//assert(theDiff > 0 && theDiff < std::numeric_limits<unsigned int>::max());
-                memcpy(&_output_buffer[0],
-                       &_output_buffer[(unsigned int)theDiff],
-                       remainder);
-            }
+              {
+              // copy to the beginning of the stream
+              std::streamsize theDiff = written_byte_size-remainder;
+              //assert(theDiff > 0 && theDiff < std::numeric_limits<unsigned int>::max());
+              memcpy(&_output_buffer[0],
+                &_output_buffer[(unsigned int)theDiff],
+                remainder);
+              }
 
             _zip_stream.avail_out = static_cast<uInt>(_output_buffer.size()-remainder);
             _zip_stream.next_out = &_output_buffer[remainder];
@@ -475,8 +475,8 @@ basic_unzip_streambuf<charT, traits>::unzip_from_stream(char_type* buffer,
     }
     while(_err==Z_OK && _zip_stream.avail_out != 0 && count != 0);
 
-	std::streamsize theSize = buffer_size - ((std::streamsize)_zip_stream.avail_out) / sizeof(char_type);
-//	assert (theSize >= 0 && theSize < std::numeric_limits<uInt>::max());
+  std::streamsize theSize = buffer_size - ((std::streamsize)_zip_stream.avail_out) / sizeof(char_type);
+//  assert (theSize >= 0 && theSize < std::numeric_limits<uInt>::max());
 
     // updating crc
     _crc = crc32(_crc, (byte_buffer_type) buffer,(uInt)theSize);

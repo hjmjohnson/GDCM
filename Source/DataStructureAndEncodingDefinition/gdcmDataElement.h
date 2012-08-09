@@ -87,7 +87,9 @@ public:
   /// \pre vr is a VR::VRALL (not a dual one such as OB_OW)
   void SetVR(VR const &vr) {
     if( vr.IsVRFile() )
+      {
       VRField = vr;
+      }
   }
 
   /// Set/Get Value (bytes array, SQ of items, SQ of fragments):
