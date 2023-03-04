@@ -1,16 +1,23 @@
 # same as boost settings:
-#SET(CTEST_CUSTOM_MAXIMUM_NUMBER_OF_ERRORS 1000)
-#SET(CTEST_CUSTOM_MAXIMUM_NUMBER_OF_WARNINGS 1000)
-##SET(CTEST_CUSTOM_MAXIMUM_PASSED_TEST_OUTPUT_SIZE 1000000)
-#SET(CTEST_CUSTOM_MAXIMUM_PASSED_TEST_OUTPUT_SIZE 49152)
-#SET(CTEST_CUSTOM_MAXIMUM_FAILED_TEST_OUTPUT_SIZE 49152)
+#set(CTEST_CUSTOM_MAXIMUM_NUMBER_OF_ERRORS 1000)
+#set(CTEST_CUSTOM_MAXIMUM_NUMBER_OF_WARNINGS 1000)
+##set(CTEST_CUSTOM_MAXIMUM_PASSED_TEST_OUTPUT_SIZE 1000000)
+#set(CTEST_CUSTOM_MAXIMUM_PASSED_TEST_OUTPUT_SIZE 49152)
+#set(CTEST_CUSTOM_MAXIMUM_FAILED_TEST_OUTPUT_SIZE 49152)
 
-SET(CTEST_CUSTOM_WARNING_EXCEPTION
+set(CTEST_CUSTOM_WARNING_EXCEPTION
   ${CTEST_CUSTOM_WARNING_EXCEPTION}
   "Utilities"
   "Utilities.gdcmopenjpeg.*warning C4101: '.*' : unreferenced local variable"
   "gdcm.*.cxx.obj : warning LNK4221: no public symbols found; archive member will be inaccessible"
   "/usr/bin/ranlib: for architecture: .* file: .* has no symbols"
+  "warning LNK4221.*no public symbols found" 
+  "ranlib:.*file:.*has no symbols" 
+  "ranlib: file: .+ has no symbols" 
+  "libtool:.*file:.*has no symbols" 
+  "ipo: warning #11053" 
+  "ipo: warning #11053"
+
   "gdcmcharls"
   "gdcmexpat"
   "warning CS0114:"
@@ -39,8 +46,17 @@ SET(CTEST_CUSTOM_WARNING_EXCEPTION
   "the object size sanitizer has no effect at"
   )
 
+if(APPLE)
+  set(CTEST_CUSTOM_WARNING_EXCEPTION
+    ${CTEST_CUSTOM_WARNING_EXCEPTION}
+    "warning -.: directory name .* does not exist"
+    "ld.*warning.*duplicate dylib.*"
+    "ld: warning: text-based stub file /System/Library/Frameworks/.*Falling back to library file for linking."
+  )
+endif()
+
 # Disable dynamic analysis on some tests:
-SET(CTEST_CUSTOM_MEMCHECK_IGNORE
+set(CTEST_CUSTOM_MEMCHECK_IGNORE
   ${CTEST_CUSTOM_MEMCHECK_IGNORE}
   "Python"
   "DCMDUMP"
