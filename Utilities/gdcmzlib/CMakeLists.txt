@@ -1,5 +1,5 @@
 if(NOT DEFINED CMAKE_MINIMUM_REQUIRED_VERSION)
-  cmake_minimum_required(VERSION 2.8.7)
+  cmake_minimum_required(VERSION 3.9.2 FATAL_ERROR) # travis-ci wants 3.9.2
 endif()
 
 if(NOT ZLIB_NAMESPACE)

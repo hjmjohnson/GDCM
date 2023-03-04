@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.7)
+cmake_minimum_required(VERSION 3.9.2 FATAL_ERROR) # travis-ci wants 3.9.2
 
 # Choose behavior based on whether we are building inside the GDCM tree.
 if(GDCM_BINARY_DIR)

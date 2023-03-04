@@ -8,7 +8,7 @@
 # e.g.:
 # set(OPENJPEG_NAMESPACE "GDCMOPENJPEG")
 if(NOT DEFINED CMAKE_MINIMUM_REQUIRED_VERSION)
-  cmake_minimum_required(VERSION 2.8.2)
+  cmake_minimum_required(VERSION 3.9.2 FATAL_ERROR) # travis-ci wants 3.9.2
 endif()
 
 if(COMMAND CMAKE_POLICY)
