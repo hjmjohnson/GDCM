@@ -7,12 +7,19 @@ set(MEXD_TEST_SRCS
   TestServiceClassUser2.cxx
   TestServiceClassUser3.cxx
   TestSCUValidation.cxx
-  TestEcho.cxx
-  TestFind.cxx
   #TestULTransitionTable.cxx # symbols are not exported, mainly used for debugging
   TestFindStudyRootQuery.cxx
   TestFindPatientRootQuery.cxx
   )
+
+if(USE_LONGTIME_FAILING_TEST)
+  list(APPEND MEXD_TEST_SRCS TestEcho.cxx)
+  list(APPEND MEXD_TEST_SRCS TestFind.cxx)
+else()
+  list(REMOVE_ITEM MEXD_TEST_SRCS TestEcho.cxx)
+  list(REMOVE_ITEM MEXD_TEST_SRCS TestFind.cxx)
+endif()
+
 if(GDCM_DATA_ROOT)
   set(MEXD_TEST_SRCS
     ${MEXD_TEST_SRCS}

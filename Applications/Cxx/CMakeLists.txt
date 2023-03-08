@@ -238,6 +238,8 @@ if(BUILD_TESTING)
   # AE Title: CONQUESTSRV1
   #since these servers have no guaranteed uptime, these tests should be changed to some other, known-to-be-up server
   #add_test(NAME gdcmscu-echo-CONQUEST COMMAND gdcmscu --echo --call CONQUESTSRV1 joe.bwh.harvard.edu 5678)
+
+  if(USE_LONGTIME_FAILING_TEST)
   add_test(NAME gdcmscu-echo-dicomserver COMMAND gdcmscu --echo www.dicomserver.co.uk 11112)
   if(GDCM_DATA_ROOT)
     # CR-MONO1-10-chest.dcm gets rejected by www.dicomserver.co.uk:
@@ -249,6 +251,7 @@ if(BUILD_TESTING)
   endif()
   #add_test(NAME gdcmscu-find-CONQUEST COMMAND gdcmscu --find --patient --call CONQUESTSRV1 joe.bwh.harvard.edu 11112 --patientroot -k 10,10=X*)
   add_test(NAME gdcmscu-find-dicomserver COMMAND gdcmscu --find --patient www.dicomserver.co.uk 11112 --patientroot -k 10,20=*)
+  endif()
 
   if(GDCM_DICOM_SERVER_AETITLE)
   if(GDCM_DATA_ROOT)

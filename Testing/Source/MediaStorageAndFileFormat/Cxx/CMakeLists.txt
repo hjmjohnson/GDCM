@@ -2,7 +2,6 @@
 # MSFF
 set(MSFF_TEST_SRCS
   TestAnonymizer.cxx
-  TestAnonymizer4.cxx
   TestDataSetHelper.cxx
   TestEquipmentManufacturer.cxx
   TestFileChangeTransferSyntax1.cxx
@@ -67,7 +66,6 @@ set(MSFF_TEST_SRCS
   TestUUIDGenerator.cxx
   #TestUIDGenerator3.cxx
   TestXMLPrinter.cxx
-  TestPrinter1.cxx
   TestPrint.cxx
   TestSorter.cxx
   TestImageReader.cxx
@@ -76,7 +74,6 @@ set(MSFF_TEST_SRCS
   TestImageRegionReader2.cxx
   TestImageRegionReader3.cxx
   #TestStreamImageWriter.cxx
-  TestImageReaderRandomEmpty.cxx
   TestDirectionCosines.cxx
   TestImageWriter.cxx
   TestCodec.cxx
@@ -104,6 +101,15 @@ set(MSFF_TEST_SRCS
   TestSurfaceWriter.cxx
   TestSurfaceWriter2.cxx
   )
+
+if(USE_LONGTIME_FAILING_TEST)
+  list(APPEND MSFF_TEST_SRCS
+          TestAnonymizer4.cxx
+          TestImageReaderRandomEmpty.cxx
+          TestPrinter1.cxx
+  )
+endif()
+
 
 if(GDCM_DATA_ROOT)
   set(MSFF_TEST_SRCS

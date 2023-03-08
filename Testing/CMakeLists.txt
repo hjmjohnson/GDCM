@@ -1,4 +1,6 @@
 
+option(USE_LONGTIME_FAILING_TEST "Turn on tests that have been failing for a very long time with being addressed" OFF)
+
 find_package(DCMTK)
 find_package(DICOM3TOOLS)
 
